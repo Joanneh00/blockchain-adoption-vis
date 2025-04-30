@@ -1,23 +1,15 @@
-import logo from './logo.svg';
+import React from 'react';
+import BlockchainMLModel from './components/BlockchainMLModel';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="dashboard-header">
+        <h1>Blockchain Adoption Analysis</h1>
+        <p>Machine learning insights for blockchain technology adoption in the palm oil industry</p>
+      </div>
+      <BlockchainMLModel />
     </div>
   );
 }
