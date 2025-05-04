@@ -10,8 +10,8 @@ const LINEAR_REGRESSION_MODEL = {
 };
 
 const COMBINED_MODEL = {
-  weights: [0.0811,-0.0030,-0.1430,0.2330,0.2009,0.1665,0.1664,0.2065],
-  bias: 0.1489
+  weights: [0.1277,-0.0264,-0.0669,0.1560,0.1638,0.1993,0.1810,0.2286 ],
+  bias: 0.0212
 };
 
 //TODO: Change the value
@@ -25,14 +25,14 @@ const FEATURE_IMPORTANCE = [
 ];
 
 const COMBINED_FEATURE_IMPORTANCE = [
-  { name: "Compatibility (CPT)", importance: 4.03, weight: 0.0468 },
-  { name: "Relative Advantage (RAD)", importance: 0.72, weight: 0.0084 },
-  { name: "Complexity (CPX)", importance: 9.91, weight: -0.1149 },
-  { name: "Subjective Norms (SN)", importance: 16.01, weight: 0.1857 },
-  { name: "Perceived Behavioral Control (PBC)", importance: 17.79, weight: 0.2063 },
-  { name: "Perceived Ease of Use (PEOU)", importance: 12.81, weight: 0.1485 },
-  { name: "Perceived Usefulness (PU)", importance: 22.26, weight: 0.2581 },
-  { name: "Attitude (ATT)", importance: 16.46, weight: 0.1908 }
+  { name: "Compatibility (CPT)", importance: 11.11, weight: 0.1277 },
+  { name: "Relative Advantage (RAD)", importance: 2.30, weight: -0.0264 },
+  { name: "Complexity (CPX)", importance: 5.82, weight: -0.0669 },
+  { name: "Subjective Norms (SN)", importance: 13.57, weight: 0.1560 },
+  { name: "Perceived Behavioral Control (PBC)", importance: 14.24, weight: 0.1638 },
+  { name: "Perceived Ease of Use (PEOU)", importance: 17.34, weight: 0.1994 },
+  { name: "Perceived Usefulness (PU)", importance: 15.74, weight: 0.1810 },
+  { name: "Attitude (ATT)", importance: 19.88, weight: 0.2286 }
 ];
 // TODO: Change the value
 // Performance metrics
@@ -45,13 +45,21 @@ const MODEL_PERFORMANCE = {
     trainR2: 0.7295,
     testR2: 0.0596
   },
-  combinedModel: {
-    trainR2: 0.6745,
-    testR2: 0.7054
-  },
   randomForest: {
     trainR2: 0.7624,
     testR2: 0.6946
+  },
+  combinedModelLR: {
+    trainR2: 0.6669,
+    testR2: 0.7267
+  },
+  combinedModelDT: {
+    trainR2: 0.7270,
+    testR2: 0.6256
+  },
+  combinedModelRF: {
+    trainR2: 0.8086,
+    testR2: 0.6925
   }
 };
 
@@ -138,14 +146,24 @@ const ModelPerformanceComparison = ({ performance }) => {
               <td>{performance.decisionTree.testR2.toFixed(4)}</td>
             </tr>
             <tr>
-              <td>Combined Model</td>
-              <td>{performance.combinedModel.trainR2.toFixed(4)}</td>
-              <td>{performance.combinedModel.testR2.toFixed(4)}</td>
-            </tr>
-            <tr>
               <td>Random Forest</td>
               <td>{performance.randomForest.trainR2.toFixed(4)}</td>
               <td>{performance.randomForest.testR2.toFixed(4)}</td>
+            </tr>
+            <tr>
+              <td>Combined Model Linear Regression </td>
+              <td>{performance.combinedModelLR.trainR2.toFixed(4)}</td>
+              <td>{performance.combinedModelLR.testR2.toFixed(4)}</td>
+            </tr>
+            <tr>
+              <td>Combined Model Decision Tree </td>
+              <td>{performance.combinedModelDT.trainR2.toFixed(4)}</td>
+              <td>{performance.combinedModelDT.testR2.toFixed(4)}</td>
+            </tr>
+            <tr>
+              <td>Combined Model Random Forest </td>
+              <td>{performance.combinedModelRF.trainR2.toFixed(4)}</td>
+              <td>{performance.combinedModelRF.testR2.toFixed(4)}</td>
             </tr>
           </tbody>
         </table>
@@ -525,13 +543,13 @@ const BlockchainMLModel = () => {
         </ul>
         <p className="overview-text">
           Both models have been trained and tested on real survey data, with the combined model achieving
-          the highest predictive accuracy (R² = 0.66 on test data).
+          the highest predictive accuracy (R² =73 on test data).
         </p>
       </div>
       
       <MachineLearningPredictionTool />
       
-      <div className="findings-section">
+      {/* <div className="findings-section">
         <h2 className="section-title">Key Findings from Machine Learning Analysis</h2>
         
         <div className="finding-group">
@@ -557,7 +575,7 @@ const BlockchainMLModel = () => {
           indicating that blockchain adoption is influenced by both external factors and internal
           perceptions of usefulness and ease of use.</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
